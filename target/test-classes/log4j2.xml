@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="[%-5level] %logger{10}.%M() - %msg%n" />
+		</Console>
+
+		<File name="File" fileName="C:/Temp/app.log">
+			<PatternLayout
+				pattern="[%-5level] %logger{10}.%M() - %msg%n" />
+		</File>
+	</Appenders>
+	
+	<Loggers>
+		<Logger name="com.mycompany.web" level="debug"
+			additivity="false">
+			<AppenderRef ref="Console" />
+		</Logger>
+	</Loggers>
+</Configuration>
