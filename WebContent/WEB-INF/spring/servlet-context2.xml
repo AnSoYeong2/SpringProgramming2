@@ -22,19 +22,14 @@
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/views/" /> <!-- 접두사로 얘를 붙여줄거야 다른 폴더에 넣고싶다면 views대신 다른 폴더명을 넣어주면 된다 -->
+		<property name="prefix" value="/WEB-INF/views2/" /> <!-- 접두사로 얘를 붙여줄거야 다른 폴더에 넣고싶다면 views대신 다른 폴더명을 넣어주면 된다 -->
 		<property name="suffix" value=".jsp" /> <!-- 접미사로 얘를 붙이겠다 -->
 	</bean>
 	
 	<!-- 어느방식으로 찾을것인지 scan : 위에서부터 아래로 이 패키지 아래의 클래스들(@붙어있는애들(Spring이 관리)) 너가 관리해! -->	
-	<context:component-scan base-package="com.mycompany.web" />
+	<context:component-scan base-package="com.mycompany.web2" />
 
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
 
-	<!-- 생성자 주입 방식 -->
-	<!-- <bean id="ch09Service" class="com.mycompany.web.service.Ch09Service">
-		<constructor-arg name="arg1" value="홍길동"></constructor-arg>
-		<constructor-arg name="arg2" value="10"></constructor-arg>
-	</bean>	 -->
 </beans>
  

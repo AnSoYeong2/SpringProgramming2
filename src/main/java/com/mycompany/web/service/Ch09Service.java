@@ -3,14 +3,19 @@ package com.mycompany.web.service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.mycompany.web.dao.Ch09Dao;
-import com.mycompany.web.dao.Ch09Dao2;
 
-@Component("ch09Service")
+@Service
 public class Ch09Service {
 	private static final Logger logger = LoggerFactory.getLogger(Ch09Service.class);
+	
+	/* 생성자 주입 방식-잘쓰지 않음 
+	 * public Ch09Service(String arg1, int arg2) {
+	 * 
+	 * }
+	 */
 	
 	//어떻게 객체를 대입할까? Spring이 관리하는 객체로 사용하기 위한 방법: 1.생성자주입 2.setter주입
 	@Autowired
