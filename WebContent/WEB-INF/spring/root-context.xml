@@ -4,5 +4,29 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<bean id="ch09CommonService" class="com.mycompany.web2.service.Ch09CommonService"></bean>
-
+	
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp2.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="oracle.jdbc.OracleDriver"></property>
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl"></property>
+		<property name="username" value="user"></property>
+		<property name="password" value="iot12345"></property>
+		<property name="initialSize" value="1"></property>
+		<property name="maxTotal" value="2"></property>
+		<property name="maxIdle" value="1"></property>
+	</bean>
+	
+	<!-- 코드에서 사용하지는 않음 그러나 아래 bean태그를 사용하기 위해(생성자 주입)써주는거야 -->
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="mapperLocations" value="WEB-INF/mybatis/*.xml"/>
+	</bean>
+	
+	<!-- 실제로 우리가 사용하는 객체 -->
+	<bean id="sqlSessionTemplate"
+		class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory"></constructor-arg>
+		</bean>
 </beans>

@@ -78,7 +78,8 @@ body, html{
             	<li><a href="Ch05/content" target="iframe">컨트롤러에서 뷰로 데이터 전달</a></li>  
             	<li><a href="Ch06/content" target="iframe">매개변수 타입과 리턴 타입(&파일 업로드)</a></li>  
             	<li><a href="Ch08/content" target="iframe">파일 업로드</a></li>    
-            	<li><a href="Ch09/content" target="iframe">의존성 주입(DI)</a></li>  
+            	<li><a href="Ch09/content" target="iframe">의존성 주입(DI)</a></li>
+            	<li><a href="Ch10/content" target="iframe">데이터베이스 연동</a></li>  
             </ul>
          </div>
          <div id="center">

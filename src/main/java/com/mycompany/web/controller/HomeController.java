@@ -25,6 +25,8 @@ public class HomeController {
 		ch09CommonService.method1();
 		return "home";
 	}
+	
+	
 	@RequestMapping("/info")
 	public String info() {
 		logger.debug("실행");

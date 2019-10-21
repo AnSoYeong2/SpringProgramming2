@@ -7,6 +7,12 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
+	<!-- spring-version이라는 변수에 버전값을 넣어준거야 왜냐면 버전 바뀔때마다 하나씩 다 바꾸려면 힘드니까 (jdbc랑 
+		mvc는 버전이 같아야함) -->
+	<properties>
+		<spring-version>5.2.0.RELEASE</spring-version>
+	</properties>
+
 	<dependencies>
 
 		<!-- <dependency> <groupId>org.apache.logging.log4j</groupId> <artifactId>log4j-slf4j-impl</artifactId> 
@@ -20,7 +26,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-			<version>5.2.0.RELEASE</version>
+			<version>${spring-version}</version>
 		</dependency>
 
 		<dependency>
@@ -40,6 +46,35 @@
 			<artifactId>commons-fileupload</artifactId>
 			<version>1.4</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-dbcp2</artifactId>
+			<version>2.7.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring-version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+		<!-- 마이바티스를 사용할 수 있게 하기위한 dependency -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.5.2</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
+		<!-- spring에서 mybatis를 사용할 수있게 해주는 dependency -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>2.0.2</version>
+		</dependency>
+
 
 	</dependencies>
 	<build>
