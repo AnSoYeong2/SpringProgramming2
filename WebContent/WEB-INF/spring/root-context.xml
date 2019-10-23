@@ -6,8 +6,7 @@
 	<bean id="ch09CommonService" class="com.mycompany.web2.service.Ch09CommonService"></bean>
 	
 	<bean id="dataSource"
-		class="org.apache.commons.dbcp2.BasicDataSource"
-		destroy-method="close">
+		class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="oracle.jdbc.OracleDriver"></property>
 		<property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl"></property>
 		<property name="username" value="user"></property>

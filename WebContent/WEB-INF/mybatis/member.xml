@@ -15,6 +15,7 @@
 	<insert id="insertMember" parameterType="com.mycompany.web.dto.Ch10Member">
 		insert into member(mid, mname, mpassword) values (#{mid}, #{mname},#{mpassword})
 	</insert>
+	
 </mapper>
 
 

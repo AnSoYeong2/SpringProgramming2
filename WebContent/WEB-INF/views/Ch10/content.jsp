@@ -45,7 +45,7 @@
 		</p>
 		
 		<p>
-			<a href="insertMember">dad</a>
+			<a href="boardList?pageNo=1" class="btn btn-primary">게시판</a>
 		</p>
 		
 	</body>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board">
+	<!-- 컬럼의 이름과 필드의 이름이 다를 경우에 매칭을 시키기 위해 Map을 사용한다 resultType보다 resultMap을 
+		더 많이 써 왜냐면 이름 다른경우가 많아서 -->
+
+	<!-- 주어진 매개 값이 없기 때문에 parameterType을 주지 않아도 된다 -->
+	<!-- resultType은 각 행들을 이 Type의 객체로 만들어 주겠다는 것을 의미 -->
+	<select id="selectList" parameterType="map" resultType="com.mycompany.web.dto.Ch10Board">
+		select rn, bno, btitle, bwriter, bhitcount, bdate
+		from(
+			select rownum as rn, bno, btitle, bwriter, bhitcount, bdate
+			from(
+				select bno, btitle, bwriter, bhitcount, bdate
+				from board
+				order by bno desc
+			)
+			where rownum &lt;= #{endRowNo}
+		)
+		where rn &gt;= #{startRowNo}
+	</select>
+	
+	<select id="selectBoard" parameterType="int" resultType="com.mycompany.web.dto.Ch10Board">
+		select bno, btitle, bcontent, bwriter, bhitcount, bdate 
+		from board 
+		where bno=#{bno}
+	</select>
+	
+	<select id="selectTotalRowNum" resultType="int">
+		select count(*) from board
+	</select>
+	<!-- 하나씩 가져오는 거보다 DTO로 묶어서 가져오는게 낫겠지 -->
+	<!-- DTO를 SQL로 바꿔주기 위해서 parameterType을 이용해서 DTO를 가져옴 -->
+	
+	<!-- 처음에 가져온 값에는 bno가 없어 안가져왔으니까 그래서 bno에 nextval가 들어가는 거야, selectKey태그 작성함으로써 bno값을 먼저 가져와서 저기다 넣어줘라할수있음 -->
+	<!-- select로 가져온 값이 int, bno에 가져온 값을 집어 넣게 된다 -->
+	<insert id="insert"
+		parameterType="com.mycompany.web.dto.Ch10Board">
+		<!-- select 실행 전에 얘를 실행한다 만약 order가 AFTER면 select 이후 -->
+		<selectKey keyProperty="bno" resultType="int" order="BEFORE">
+			select BOARD_BNO_SEQ.nextval from dual
+		</selectKey>
+		insert into board(bno, btitle, bcontent, bwriter,bhitcount, bdate)
+		values(#{bno},#{btitle}, #{bcontent},#{bwriter}, 0, sysdate)
+	</insert>
+	
+	<update id="updateHitcount" parameterType="int">
+		update board set bhitcount = bhitcount+1
+		where bno=#{bno}
+	</update>
+	
+	<update id="updateBoard" parameterType="com.mycompany.web.dto.Ch10Board">
+		update board set btitle=#{btitle}, bcontent=#{bcontent}
+		where bno =#{bno} 
+	</update>
+	
+	<delete id="deleteBoard" parameterType="int">
+		delete from board
+		where bno=#{bno}
+	</delete>
+	
+	
+	
+	
+	
+	
+	
+</mapper>
