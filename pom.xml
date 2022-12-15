@@ -10,7 +10,7 @@
 	<!-- spring-version이라는 변수에 버전값을 넣어준거야 왜냐면 버전 바뀔때마다 하나씩 다 바꾸려면 힘드니까 (jdbc랑 
 		mvc는 버전이 같아야함) -->
 	<properties>
-		<spring-version>5.2.0.RELEASE</spring-version>
+		<spring-version>5.2.20.RELEASE</spring-version>
 	</properties>
 
 	<dependencies>
